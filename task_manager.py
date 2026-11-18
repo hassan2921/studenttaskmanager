@@ -35,8 +35,12 @@ class TaskManager:
                 self.tasks = json.load(f)
 
     def delete_task(self, task_id):
-        self.tasks = [t for t in self.tasks if t["id"] != task_id]
-        self.save()
+        for task in self.tasks:
+            if task["id"] == task_id:
+                self.tasks.remove(task)
+                self.save()
+                return task
+        raise ValueError(f"No task with ID {task_id}.")
 
     def save(self):
         with open(self.filename, "w", encoding="utf-8") as f:
