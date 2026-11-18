@@ -11,6 +11,11 @@ class TaskManager:
         self.load()
 
     def add_task(self, title):
+        if not isinstance(title, str) or not title.strip():
+            raise ValueError("Task title cannot be empty.")
+        title = title.strip()
+        if len(title) > 100:
+            raise ValueError("Task title must be 100 characters or fewer.")
         task = {"id": self._next_id(), "title": title, "done": False}
         self.tasks.append(task)
         self.save()
