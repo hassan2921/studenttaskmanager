@@ -41,3 +41,19 @@ class TaskManager:
     def save(self):
         with open(self.filename, "w", encoding="utf-8") as f:
             json.dump(self.tasks, f, indent=2)
+
+
+def read_id(prompt):
+    try:
+        return int(input(prompt))
+    except ValueError:
+        raise ValueError("Task ID must be a number.")
+
+
+def display(manager):
+    tasks = manager.list_tasks()
+    if not tasks:
+        print("No tasks yet.")
+    for t in tasks:
+        mark = "x" if t["done"] else " "
+        print(f"[{mark}] {t['id']}. {t['title']}")
