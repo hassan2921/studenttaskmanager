@@ -57,3 +57,31 @@ def display(manager):
     for t in tasks:
         mark = "x" if t["done"] else " "
         print(f"[{mark}] {t['id']}. {t['title']}")
+
+
+def main():
+    manager = TaskManager()
+    menu = "\n1) Add  2) Show  3) Complete  4) Delete  5) Quit"
+    while True:
+        print(menu)
+        choice = input("Choose an option: ").strip()
+        try:
+            if choice == "1":
+                task = manager.add_task(input("Title: "))
+                print(f"Added task #{task['id']}")
+            elif choice == "2":
+                display(manager)
+            elif choice == "3":
+                manager.complete_task(read_id("Task ID: "))
+            elif choice == "4":
+                manager.delete_task(read_id("Task ID: "))
+            elif choice == "5":
+                break
+            else:
+                print("Invalid option.")
+        except ValueError as err:
+            print(f"Error: {err}")
+
+
+if __name__ == "__main__":
+    main()
