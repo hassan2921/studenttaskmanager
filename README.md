@@ -1,2 +1,2 @@
 # studenttaskmanager
-Project status: Planning
+Project status: Under Review
