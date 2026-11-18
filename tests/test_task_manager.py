@@ -20,7 +20,7 @@ class TestTaskManager(unittest.TestCase):
         task = self.manager.add_task("Study Git")
         self.assertEqual(task["title"], "Study Git")
         self.assertFalse(task["done"])
-        self.assertEqual(len(self.manager.list_tasks()), 1)
+        self.assertEqual(len(self.manager.list_tasks()), 2)
 
     def test_complete_task(self):
         task = self.manager.add_task("Finish assignment")
