@@ -28,6 +28,7 @@ class TaskManager:
                 task["done"] = True
                 self.save()
                 return task
+        raise ValueError(f"No task with ID {task_id}.")
 
     def load(self):
         if os.path.exists(self.filename):
