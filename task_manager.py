@@ -78,7 +78,8 @@ def main():
             elif choice == "3":
                 manager.complete_task(read_id("Task ID: "))
             elif choice == "4":
-                manager.delete_task(read_id("Task ID: "))
+                removed = manager.delete_task(read_id("Task ID: "))
+                print(f"Deleted: {removed['title']}")
             elif choice == "5":
                 break
             else:
